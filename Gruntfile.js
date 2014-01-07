@@ -37,7 +37,7 @@ module.exports = function(grunt) {
                 {
                     expand: true,
                     cwd: './img/',
-                    src: ['**/*.png'],
+                    src: ['*.png'],
                     dest: './img/compressed/',
                     ext: '.png'
                 }
@@ -51,7 +51,7 @@ module.exports = function(grunt) {
                 {
                     expand: true,
                     cwd: './img/',
-                    src: ['**/*.jpg'],
+                    src: ['*.jpg'],
                     dest: './img/compressed/',
                     ext: '.jpg'
                 }
@@ -70,10 +70,17 @@ module.exports = function(grunt) {
           files: ['less/*.less'],
           tasks: ['less']
         },
-        js: {
-          files: ['<%= uglify.build.src %>'],
-          tasks: ['uglify']
-        },
+      js: {
+        files: ['<%= uglify.build.src %>'],
+        tasks: ['uglify']
+      },
+      images: {
+        files: ['img/*.{png,jpg,gif}'],
+        tasks: ['imagemin'],
+        options: {
+        spawn: false,
+        }
+      }
     }
 
   });

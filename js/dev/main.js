@@ -3,5 +3,5 @@ jQuery(function($) {
 	/**
 	 * Script for back-to-top button effect
 	 */
-	// window_scrool();
+	// window_scrool(); 
 });
