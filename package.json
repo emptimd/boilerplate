@@ -8,6 +8,7 @@
     "grunt-contrib-nodeunit": "~0.2.0",
     "grunt-contrib-uglify": "~0.2.2",
     "grunt-contrib-less": "~0.8.3",
+    "jpegtran-bin": "0.2.0",
     "grunt-contrib-imagemin": "~0.4.0",
     "grunt-contrib-watch": "~0.5.3"
   }

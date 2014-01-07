@@ -3,6 +3,7 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+
     uglify: {
       build: {
         src: [
@@ -16,7 +17,7 @@ module.exports = function(grunt) {
     },
 
     less: {
-      development: {
+      dev: {
         options: {
           paths: ["less"],
           cleancss:true
@@ -35,9 +36,9 @@ module.exports = function(grunt) {
             files: [
                 {
                     expand: true,
-                    cwd: './app/images/',
+                    cwd: './img/',
                     src: ['**/*.png'],
-                    dest: './app/images/compressed/',
+                    dest: './img/compressed/',
                     ext: '.png'
                 }
             ]
@@ -49,9 +50,9 @@ module.exports = function(grunt) {
             files: [
                 {
                     expand: true,
-                    cwd: './app/images/',
+                    cwd: './img/',
                     src: ['**/*.jpg'],
-                    dest: './app/images/compressed/',
+                    dest: './img/compressed/',
                     ext: '.jpg'
                 }
             ]
@@ -60,10 +61,19 @@ module.exports = function(grunt) {
 
     watch: {
       options: {
-        livereload: true,
+        livereload: {
+          port:900,
+          options: { livereload: true },
+        }//or true and no port
       },
-      files: ['less/*.less'],
-      tasks: 'default'
+      css: {
+          files: ['less/*.less'],
+          tasks: ['less']
+        },
+        js: {
+          files: ['<%= uglify.build.src %>'],
+          tasks: ['uglify']
+        },
     }
 
   });
@@ -86,6 +96,6 @@ module.exports = function(grunt) {
   // grunt.loadNpmTasks('grunt-sed');
 
   // Default task(s).
-  grunt.registerTask('default', ['uglify', 'less'/*, 'imagemin'*/]);
+  grunt.registerTask('default', ['uglify', 'less', 'imagemin']);
 
 };

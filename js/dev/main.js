@@ -1,5 +1,5 @@
 jQuery(function($) {
-	// $('#myModal').modal();  
+	// $('#myModal').modal();
 	/**
 	 * Script for back-to-top button effect
 	 */
