@@ -1,0 +1,33 @@
+/*-------------------------------------------------*/
+/* =  In this file are situated classes that will never be outputed but are used in main.less
+/*-------------------------------------------------*/
+
+.vertical_align_class {
+	&:before {
+		content: '';
+		display: inline-block; zoom: 1; *display: inline; vertical-align: middle;
+	}
+}
+
+.vale_class {
+	display: inline-block; zoom: 1; *display: inline; vertical-align: middle;
+}
+
+.dot_class {
+	text-overflow: ellipsis; overflow: hidden; white-space: nowrap;
+}
+
+.img_responsive_class {
+	display: block;
+	max-width: 100%; // Part 1: Set a maximum relative to the parent
+	height: auto; // Part 2: Scale the height according to the width, otherwise you get stretching
+}
+
+#namespace {
+	.getHeight(@n,@h){
+		.@{n} {
+			height:@h;
+			@control:@n;
+		}
+	}
+}

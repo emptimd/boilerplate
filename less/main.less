@@ -1,0 +1,145 @@
+@import '_import';
+/*-------------------------------------------------*/
+/* =  General
+/*-------------------------------------------------*/
+@col: red;
+@col2: darken(@col, 30%);
+body {
+	font-family: 'PT Sans';
+	background-color: green;
+	color:red;
+}
+
+
+ul {
+	width: 500px;
+	height: 50px;
+	@color:#f05;
+	.ldf(@color,0,30%,80%);
+	.gradient(@col2,@ldf);
+	
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	
+	li {
+		list-style-type: none;
+		a {
+			float: left;
+			display: block;
+			width: 70px;
+			height: 50px;
+			line-height: 50px;
+			-webkit-transition: all .5s;
+			-moz-transition: all .5s;
+			-ms-transition: all .5s;
+			-o-transition: all .5s;
+			transition: all .5s;
+		}
+	}
+}
+
+#dot {
+	.dot(450px); /* Cut element and add 3 dots */
+}
+
+/*-------------------------------------------------*/
+/* =  BOX
+/*-------------------------------------------------*/
+
+#box {
+	margin: 0 auto;
+	margin-bottom: 50px;
+	width: 300px;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	color: green;
+	@h300:300px;
+	height: @h300;
+	@color:red;
+	.ldf(@color,1,20%,80%);
+	background-color: @color;
+	-webkit-box-shadow: 0 0 0 50px @ldf;
+	-moz-box-shadow: 0 0 0 50px @ldf;
+	box-shadow: 0 0 0 50px @ldf;
+	.valign(@h300);
+	text-align:center;
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+	-ms-transition: all .5s;
+	-o-transition: all .5s;
+	transition: all .5s;
+	.centered {
+		.valigne; /* This elment is totally centered */
+	}
+	&:hover {
+		cursor: pointer;
+		.ldf(@color,0,20%,100%);
+		color: @ldf;
+	}
+}
+
+/*-------------------------------------------------*/
+/* =  END BOX
+/*-------------------------------------------------*/
+
+
+
+
+
+/*-------------------------------------------------*/
+/* =  Header
+/*-------------------------------------------------*/
+
+
+/*-------------------------------------------------*/
+/* =  END Header
+/*-------------------------------------------------*/
+
+/*-------------------------------------------------*/
+/* =  Sidebar
+/*-------------------------------------------------*/
+
+
+/*-------------------------------------------------*/
+/* =  END Sidebar
+/*-------------------------------------------------*/
+
+/*-------------------------------------------------*/
+/* =  Content
+/*-------------------------------------------------*/
+
+
+/*-------------------------------------------------*/
+/* =  END Content
+/*-------------------------------------------------*/
+
+/*-------------------------------------------------*/
+/* =  Footer
+/*-------------------------------------------------*/
+
+
+/*-------------------------------------------------*/
+/* =  END Footer
+/*-------------------------------------------------*/
+
+/* Back to top */ 
+
+/*#bttop {
+	background-image: url('../img/icon/backtotop.png');
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	height: 49px;
+	width: 49px;
+	padding:5px;
+	position:fixed;
+	bottom:35px;
+	right:10px;
+	cursor:pointer;
+	display:none;
+	text-indent: -9999px;
+	&:hover {
+		background-image: url('../img/icon/backtotophv.png');
+	}
+}*/
