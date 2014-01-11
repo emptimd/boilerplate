@@ -67,7 +67,7 @@ $.fn.alignParentCenter = function() {
  */
 // function window_scrool() {
 //  $(window).scroll(function () {
-//      if ($(this).scrollTop() != 0) {
+//      if ($(this).scrollTop() > 70) {
 //          $('#bttop').fadeIn();
 //      } else {
 //          $('#bttop').fadeOut();
@@ -83,6 +83,9 @@ $.fn.alignParentCenter = function() {
  * Google map
  */
 // function googlemap(lat,lang,zoom) {
+// 	if (typeof lat === 'undefined') lat=10;
+// 	if (typeof lang === 'undefined') lang=10;
+// 	if (typeof zoom === 'undefined') zoom=2;
 // 	var mapCanvas = document.getElementById('map');
 // 	 var latlng = new google.maps.LatLng(lat, lang);
 // 	 var settings = {
@@ -96,4 +99,3 @@ $.fn.alignParentCenter = function() {
 // 	 };
 // 	 var map = new google.maps.Map(mapCanvas, settings);
 // }
-

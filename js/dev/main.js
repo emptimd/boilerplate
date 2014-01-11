@@ -3,5 +3,9 @@ jQuery(function($) {
 	/**
 	 * Script for back-to-top button effect
 	 */
-	// window_scrool(); 
+	// window_scrool();
+	console.log('test');
+	console.warn('test');
+	console.error('test'); 
+
 });

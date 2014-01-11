@@ -2,3 +2,4 @@ Gemfile.lock
 *.md
 CHANGELOG
 node_modules
+test
