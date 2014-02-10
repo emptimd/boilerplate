@@ -1,0 +1,84 @@
+1)sudo gedit ======================>  	OPEN FILE IN GEDIT REDACTOR.
+	example: sudo gedit /etc/hosts
+
+2)sudo service apache2 reload/restart =============> RESTART APACHE
+
+3)sudo a2ensite my-sites ======>SOMETHING LIKE CHANGE DEFAULT site-available
+
+4)git clone ssh://linkmastic@linkmastic.com:22/~/public_html linkmastic.git
+
+5)sudo apt-get install apache2 php5-cli php5-common php5-mysql php5-dg mysql-common mysql-server ubuntu-restricted-extras phpmyadmin 
+
+6)chmod -R a-rwx,a+rX,u+rwX linkmastic.git 
+
+sudo chown -R user:user markup/
+
+7)sudo a2enmod rewrite git =============> ENABLE REWRITE RULE
+
+8)To set up under Apache all you need to do is include the following line in /etc/apache2/apache2.conf.
+
+Include /etc/phpmyadmin/apache.conf
+
+9)ssh linkmastic@151.248.114.179
+
+10)mysqldump -h localhost -u linkmasticuser -pLC7uHHiAX67G8na linkmacticdb > ~/database.sql
+
+11)mysql -hlocalhost -uroot -puser linkmasticdb < database.sql
+
+12)/etc/php5/apache2/php.ini
+
+13) INSTALL NODEJS
+
+git clone git://github.com/joyent/node.git
+310  cd node/
+311  ./configure 
+312  make
+313  ls -l
+314  node
+315  sudo make install
+
+
+14) gnome-system-monitor
+
+15) $ git config --global user.name "Jason Seifer"
+$ git config --global user.email "jason@teamtreehouse.com"
+
+16) sudo ln -s /home/user/Public/Bogdan/Sublime\ Text\ 2/sublime_text /usr/bin/subl
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+					PHP
+
+1) <?php echo $form->dropDownListRow($model,'category_id',CHtml::listData(Category::model()->findAll(), 'id', 'title_ru'),array('empty' => 'Please select','class'=>'span5')); ?>
+
+2) 'filter'=>CHtml::listData(Page::model()->with("content_blocks")->findAll(array("condition"=>"t.id=content_blocks.page_id")),'id','title'),
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+					Javascript
+1) var self = this;
+       if (self.timer)
+           clearTimeout(self.timer);
+       self.timer = setTimeout(function(){
+           $.post(document.URL,{'autosave':"true"},function(data){
+               location.reload();
+           });
+       },1000);
+
+2) $(this).closest('tr');
+test) $(".content_block_position iframe").contents().find("#tinymce").contents()
+
+1) $(".content_block_position iframe").contents().find("#tinymce").html();
+
+2) var content = $("#"+unique_name_textarea+"_ifr").contents().find("#tinymce").html();
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+					Yii
+1)user@user-P5K-SE-EPU:~/sites/doxytera.git/protected$ php yiic message config/message-main.php
+
+
++++++++++++++++++++++++++++++++++++++LINKS+++++++++++++++++++++++
+1)http://files.mail.ru/6885E9A4CC734D79B3501A9DAB213C10
+2)https://www.dropbox.com/home
+
