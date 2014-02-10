@@ -6,7 +6,7 @@
 @col2: darken(@col, 30%);
 body {
 	font-family: 'PT Sans';
-	background-color: orange;
+	background-color: yellow;
 	color:red;
 }
 
@@ -17,11 +17,13 @@ ul {
 	@color:#f05;
 	.ldf(@color,0,30%,80%);
 	.gradient(@col2,@ldf);
-	
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
 	border-radius: 10px;
-	
+	box-shadow: 10px 10px 20px 0px #444;
+	transition: .5s;
+	&:hover {
+		box-shadow: none;
+		cursor: pointer;
+	}
 	li {
 		list-style-type: none;
 		a {

@@ -6,6 +6,7 @@ jQuery(function($) {
 	// window_scrool();
 	console.log('test');
 	console.warn('test');
-	console.error('test'); 
+	console.error('test');
+
 
 });

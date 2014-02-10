@@ -6,14 +6,19 @@
     "grunt": "~0.4.2",
     "grunt-contrib-jshint": "~0.8.0",
     "grunt-contrib-nodeunit": "~0.2.0",
-    "grunt-contrib-uglify": "~0.2.2",
-    "grunt-contrib-less": "~0.9.0",
-    "grunt-contrib-imagemin": "~0.4.0",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-contrib-connect": "~0.6.0",
-    "grunt-autoprefixer": "~0.6.4",
-    "grunt-contrib-concat": "~0.3.0",
-    "grunt-html-validation": "~0.1.13",
-    "grunt-contrib-qunit": "~0.3.0"
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-less": "latest",
+    "grunt-contrib-imagemin": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-contrib-connect": "latest",
+    "grunt-autoprefixer": "latest",
+    "grunt-contrib-concat": "latest",
+    "grunt-html-validation": "latest",
+    "grunt-contrib-qunit": "latest",
+    "grunt-newer": "latest",
+    "grunt-uncss": "~0.1.7"
+  },
+  "dependencies": {
+    "time-grunt": "~0.2.9"
   }
 }

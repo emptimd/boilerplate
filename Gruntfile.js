@@ -1,11 +1,13 @@
 module.exports = function(grunt) {
+	// show elapsed time at the end
+	require('time-grunt')(grunt);
 
 	// Project configuration.
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 
 		concat: {
-			dist: {
+			js: {
 				src: [
 				'js/dev/_functions.js',
 				'js/dev/main.js'
@@ -54,7 +56,7 @@ module.exports = function(grunt) {
 					{
 						expand: true,
 						cwd: './img/',
-						src: ['*.png'],
+						src: ['**/*.png'],
 						dest: './img/',
 						ext: '.png'
 					}
@@ -68,7 +70,7 @@ module.exports = function(grunt) {
 					{
 						expand: true,
 						cwd: './img/',
-						src: ['*.jpg'],
+						src: ['**/*.jpg'],
 						dest: './img/',
 						ext: '.jpg'
 					}
@@ -77,30 +79,47 @@ module.exports = function(grunt) {
 		},
 
 		watch: {
-			options: {
-				livereload: true
-			},
 			css: {
-				files: ['less/*.less'],
-				tasks: ['less', 'autoprefixer']
+				files: ['less/**/*.less'],
+				tasks: ['refresh_css'],
+				options: {
+					debounceDelay: 250,
+					spawn: false
+				}
 			},
 			js: {
-				files: ['<%= concat.dist.src %>'],
-				tasks: ['concat', 'removelogging', 'uglify']
+				files: ['<%= concat.js.src %>'],
+				tasks: ['refresh_js'],
+				options: {
+					debounceDelay: 250,
+					spawn: false
+				}
 			},
-			html: {
-				files: ['*.html']
-			}
+            livereload: {
+                options: {
+                    livereload: '<%= connect.options.livereload %>'
+                },
+                files: [
+                    '*.html',
+                    'css/{,*/}*.css',
+                    'js/{,*/}*.js'
+                ]
+            }
 		},
 		connect: {
-			server: {
+			options: {
+				port: 9000,
+				livereload: 35729,
+				// change this to '0.0.0.0' to access the server from outside
+				hostname: 'localhost'
+			},
+			livereload: {
 				options: {
-					port: 8000,
-					base: './',
-					open: {
-						target: 'http://localhost:8000',
-						callback: function() {} // called when the app has opened
-					}
+					open: true,
+					base: [
+						'./',
+						'css'
+					]
 				}
 			}
 		},
@@ -108,6 +127,14 @@ module.exports = function(grunt) {
 		removelogging: {
 			dist: {
 				src: "js/common.js" // Each file will be overwritten with the output!
+			}
+		},
+
+		uncss: {
+			dist: {
+				files: {
+					'css/tidy.css': ['index.html']
+				}
 			}
 		},
 
@@ -151,32 +178,64 @@ module.exports = function(grunt) {
 				force: true
 			},
 			uses_defaults: ['Gruntfile.js', 'js/common.js']
-		}
+		},
 
+		newer: {
+			options: {
+			cache: 'cache'
+			}
+		}
 	});
 
-	// These plugins provide necessary tasks.
-	// grunt.loadNpmTasks('grunt-contrib-clean');
-	grunt.loadNpmTasks('grunt-contrib-concat');
-	grunt.loadNpmTasks('grunt-contrib-connect');
-	// grunt.loadNpmTasks('grunt-contrib-copy');
-	grunt.loadNpmTasks('grunt-contrib-jshint');
-	grunt.loadNpmTasks('grunt-contrib-qunit');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-less');
-	grunt.loadNpmTasks('grunt-contrib-imagemin');
-	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-html-validation');
-	// grunt.loadNpmTasks('grunt-jekyll');
-	// grunt.loadNpmTasks('grunt-recess');
-	// grunt.loadNpmTasks('grunt-saucelabs');
-	// grunt.loadNpmTasks('grunt-sed');
-	grunt.loadNpmTasks('grunt-autoprefixer');
-	grunt.loadNpmTasks("grunt-remove-logging");
 
-	// Default task(s).
-	grunt.registerTask('default', ['concat', 'removelogging', 'uglify', 'less', 'imagemin']);
-	grunt.registerTask('dev', ['connect', 'watch']);
-	grunt.registerTask('test', ['jshint' ,'validation']);
+
+	grunt.registerTask('default', [], function () {
+		// grunt.loadNpmTasks('grunt-contrib-clean');
+		grunt.loadNpmTasks('grunt-contrib-concat');
+		grunt.loadNpmTasks('grunt-contrib-connect');
+		// grunt.loadNpmTasks('grunt-contrib-copy');
+		// grunt.loadNpmTasks('grunt-contrib-jshint');
+		// grunt.loadNpmTasks('grunt-contrib-qunit');
+		grunt.loadNpmTasks('grunt-contrib-uglify');
+		grunt.loadNpmTasks('grunt-contrib-less');
+		// grunt.loadNpmTasks('grunt-html-validation');
+		// grunt.loadNpmTasks('grunt-uncss');
+		// grunt.loadNpmTasks('grunt-jekyll');
+		// grunt.loadNpmTasks('grunt-recess');
+		// grunt.loadNpmTasks('grunt-saucelabs');
+		// grunt.loadNpmTasks('grunt-sed');
+		grunt.loadNpmTasks('grunt-autoprefixer');
+		grunt.loadNpmTasks("grunt-remove-logging");
+		grunt.loadNpmTasks('grunt-newer');
+
+		grunt.task.run('concat', 'removelogging', 'uglify', 'less', 'autoprefixer');
+	});
+
+	grunt.registerTask('dev', [], function () {
+		grunt.loadNpmTasks('grunt-contrib-uglify');
+		grunt.loadNpmTasks('grunt-contrib-concat');
+		grunt.loadNpmTasks('grunt-contrib-less');
+		grunt.loadNpmTasks('grunt-autoprefixer');
+		grunt.loadNpmTasks('grunt-contrib-connect');
+		grunt.loadNpmTasks('grunt-contrib-watch');
+		grunt.loadNpmTasks('grunt-newer');
+
+		grunt.task.run('connect', 'watch');
+	});
+
+
+	grunt.registerTask('refresh_css', [
+		'less',
+		'autoprefixer'
+	]);
+	grunt.registerTask('refresh_js', [
+		'newer:concat:js',
+		'uglify'
+	]);
+
+	grunt.registerTask('images', [], function () {
+		grunt.loadNpmTasks('grunt-contrib-imagemin');
+		grunt.task.run('imagemin');
+	});
 
 };
