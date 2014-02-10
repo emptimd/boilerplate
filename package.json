@@ -16,7 +16,8 @@
     "grunt-html-validation": "latest",
     "grunt-contrib-qunit": "latest",
     "grunt-newer": "latest",
-    "grunt-uncss": "~0.1.7"
+    "grunt-uncss": "~0.1.7",
+    "grunt-image-resize": "~0.3.0"
   },
   "dependencies": {
     "time-grunt": "~0.2.9"

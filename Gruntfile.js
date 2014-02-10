@@ -180,6 +180,39 @@ module.exports = function(grunt) {
 			uses_defaults: ['Gruntfile.js', 'js/common.js']
 		},
 
+		webshot: {
+	        // example
+	        homepage: {
+	            options: {
+	                // url, file or html
+	                siteType: 'url',
+	                site: 'http://localhost:9000/index.html',
+	                savePath: 'img/shot.png',
+	                windowSize: {
+	                    width: 1024,
+	                    height: 768
+	                },
+	                shotSize: {
+	                    width: 1024,//600 x 450 or 330 x 225
+	                    height: 768
+	                }
+	            }
+	        }
+	    },
+
+	    image_resize: {
+	        resize: {
+	          options: {
+	            width: 330,
+	            height: 225,
+	            crop: true
+	          },
+	          files: {
+	            'img/shot.png': 'img/shot.png'
+	          }
+	        }
+	      },
+
 		newer: {
 			options: {
 			cache: 'cache'
@@ -212,6 +245,8 @@ module.exports = function(grunt) {
 	});
 
 	grunt.registerTask('dev', [], function () {
+		grunt.loadNpmTasks('grunt-webshot');
+		grunt.loadNpmTasks('grunt-image-resize');
 		grunt.loadNpmTasks('grunt-contrib-uglify');
 		grunt.loadNpmTasks('grunt-contrib-concat');
 		grunt.loadNpmTasks('grunt-contrib-less');
@@ -220,7 +255,7 @@ module.exports = function(grunt) {
 		grunt.loadNpmTasks('grunt-contrib-watch');
 		grunt.loadNpmTasks('grunt-newer');
 
-		grunt.task.run('connect', 'watch');
+		grunt.task.run('connect', 'webshot', 'image_resize', 'watch');
 	});
 
 
