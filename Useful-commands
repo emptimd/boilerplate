@@ -1,9 +1,12 @@
 1)sudo gedit ======================>  	OPEN FILE IN GEDIT REDACTOR.
 	example: sudo gedit /etc/hosts
+  sudo su
 
 2)sudo service apache2 reload/restart =============> RESTART APACHE
 
 3)sudo a2ensite my-sites ======>SOMETHING LIKE CHANGE DEFAULT site-available
+
+a2ensite, a2dissite, a2enmod, a2dismod
 
 4)git clone ssh://linkmastic@linkmastic.com:22/~/public_html linkmastic.git
 
@@ -14,6 +17,9 @@
 sudo chown -R user:user markup/
 
 7)sudo a2enmod rewrite git =============> ENABLE REWRITE RULE
+sudo vi /etc/apache2/envvars -Add user Here
+sudo rm -rf /var/lock/apache2
+sudo service apache2 restart
 
 8)To set up under Apache all you need to do is include the following line in /etc/apache2/apache2.conf.
 
@@ -37,14 +43,35 @@ git clone git://github.com/joyent/node.git
 314  node
 315  sudo make install
 
+http://stackoverflow.com/questions/18212175/npm-yo-keeps-asking-for-sudo-permission/18277225#18277225
+
+echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
 
 14) gnome-system-monitor
 
 15) $ git config --global user.name "Jason Seifer"
-$ git config --global user.email "jason@teamtreehouse.com"
+	$ git config --global user.email "jason@teamtreehouse.com"
+	git config --global color.ui true
 
 16) sudo ln -s /home/user/Public/Bogdan/Sublime\ Text\ 2/sublime_text /usr/bin/subl
 
+17)nautilus .
+
+18)mkdir ~/.ssh
+chmod 700 ~/.ssh
+ssh-keygen -t rsa
+
+19)touch file
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+					WINE+PHOTOSHOP
+
+1)sudo add-apt-repository ppa:ubuntu-wine/ppa
+2)sudo apt-get update
+3)sudo apt-get install wine 
+4)wget http://www.kegel.com/wine/winetricks
+5)winetricks gecko vcrun2003 vcrun2005 vcrun2008 vcrun2010 gdiplus flash 11 atmlib fontsmooth-rgb
+6)winetricks allfonts
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 					PHP
@@ -82,3 +109,20 @@ test) $(".content_block_position iframe").contents().find("#tinymce").contents()
 1)http://files.mail.ru/6885E9A4CC734D79B3501A9DAB213C10
 2)https://www.dropbox.com/home
 
+++++++++++++++++++++++++++++++++++++++++JSON+++++++++++++++++++++
+
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-connect": "latest",//0.6.0
+    "grunt-contrib-watch": "latest",//0.5.3
+    "grunt-autoprefixer": "latest",//0.6.5
+    "grunt-remove-logging": "latest",//0.2.0
+    "grunt-contrib-uglify": "latest",//0.3.2
+    "grunt-contrib-less": "latest",//0.9.0
+    "grunt-contrib-imagemin": "latest",//0.5.0
+    "grunt-contrib-concat": "latest",//0.3.0
+    "grunt-newer": "latest",//0.6.1
+    "time-grunt": "latest",//0.2.9
+    "grunt-webshot": "latest",//0.1.0
+    "grunt-image-resize": "latest"//0.3.0
+  },
